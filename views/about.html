@@ -1,0 +1,76 @@
+<!--  image & text -->
+<div class="row">
+    <div class="col-md-6 no-padding"><img src="{{url}}"
+                                          class="img-responsive center-block" alt=""></div>
+    <div class="col-md-6 col-box bg-gray-light">
+        <div class="page-header">
+            <h4>协会简介</h4>
+        </div>
+        <p>{{introduce}}</p>
+    </div>
+</div>
+
+<div class="space30"></div>
+<div class="row">
+
+    <div class="skills col-md-12 col-box">
+        <div class="page-header">
+            <h4>历年获奖人数</h4>
+        </div>
+        <ul class="list-unstyled">
+
+            {{each num_total value }}
+            <li>
+                <div class="progress" style="width: {{value.num}}%;">
+                    <div class="progress-percent">{{value.num}}人</div>
+                </div>
+            </li>
+            <span>{{value.name}}</span>
+            {{/each}}
+        </ul>
+    </div>
+    <!-- end: skills -->
+
+</div>
+
+
+
+<div class="achivement row">
+    <div class="achivement-box col-sm-3 col-box">
+        <h5 class="name">会员</h5>
+        <span class="count">{{vip_total1}}</span></div>
+
+    <div class="achivement-box col-sm-3 col-box">
+        <h5 class="name">获奖种类</h5>
+        <span class="count">{{vip_total2}}</span></div>
+
+    <div class="achivement-box col-sm-3 col-box">
+        <h5 class="name">获奖人数</h5>
+        <span class="count">{{vip_total3}}</span></div>
+
+    <div class="achivement-box col-sm-3 col-box">
+        <h5 class="name">获奖次数</h5>
+        <span class="count">{{vip_total4}}</span></div>
+
+</div>
+
+<div class="space30"></div>
+<div class="timeline">
+    <div class="page-header">
+        <h4>发展历程</h4>
+    </div>
+    <ul class="timeline-list">
+        {{each timeline event }}
+        <li>
+            <div class="tl-date"><span>{{ event.time1 }} </span> <span>{{ event.time2 }}</span></div>
+            <span class="tl-icon hidden-xs fa-stack fa-lg"> <i
+                    class="fa fa-circle fa-stack-2x color-default"></i> <i
+                    class="fa fa-calendar fa-stack-1x fa-inverse"></i> </span>
+            <div class="tl-box anim-shadow">
+                <h5 class="title">{{ event.title }}</h5>
+                <p>{{ event.introduce }} </p>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</div>

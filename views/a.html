@@ -1,0 +1,11 @@
+{{each a value }}
+<div class="col-md-6 col-box bg-white no-padding"><img src="{{value.url}}" class="img-responsive" alt="Image">
+</div>
+<div class="col-md-6 col-box bg-gray-light">
+    <div class="page-header">
+        <h4>{{value.title}}</h4>
+    </div>
+    <p class="lead">{{value.introduce}} <a class="page-link" href="index.html#a{{value.res}}">相关资源下载<i
+            class="fa fa-fw fa-angle-double-right"></i></a>
+</div>
+{{/each}}
