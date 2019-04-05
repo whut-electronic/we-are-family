@@ -1,0 +1,38 @@
+var a_s =[{
+    id: "a1",
+    name: "电子设计大赛",
+    res: [{
+        type: "STM32相关",
+        reyunn: [{
+            name: "stm32视频教程",
+            own: "reyunn",
+            url: "https://www.bilibili.com/video/av18640621"
+        }]
+    },
+
+    ]
+},
+    {
+        id: "a2",
+        name: "蓝桥杯",
+        res: [{
+            type: "历年真题",
+            reyunn: [{
+                name: "2016年",
+                own: "reyunn",
+                url: "https://www.bilibili.com/video/av18640621"
+            }
+            ]
+        },{
+            type: "真题解析",
+            reyunn: [{
+                name: "2013年-2017年 Java A、B组",
+                own: "reyunn",
+                url: "https://space.bilibili.com/298073553/channel/detail?cid=66932"
+            }
+            ]
+        }
+        ]
+    }
+]
+module.exports = a_s;

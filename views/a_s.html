@@ -1,21 +1,28 @@
-<section id="a1" class="page-activ">
+{{each a_s value }}
+<section id="{{value.id}}" class="page-activ">
     <header>
         <h3>竞赛资源
-            <small>电子设计大赛</small>
+            <small>{{value.name}}</small>
         </h3>
         <h5>我们致力于打造提供竞赛经验、竞赛资料的优质学生社团</h5>
     </header>
-    <h1>电源类</h1>
+    {{each value.res r }}
+    <h3>{{r.type}}</h3>
     <table class="table">
         <tr>
             <th>资源</th>
             <th>提供者</th>
-            <th>下载连接</th>
+            <th>相关连接</th>
         </tr>
+        {{each r.reyunn o }}
         <tr>
-            <td>STM32相关模块代码</td>
-            <td>Reyunn</td>
-            <td><a class="other" href="http://baidu.com">baidu.com</a></td>
+            <td>{{o.name}}</td>
+            <td>{{o.own}}</td>
+            <td><a class="other" href="{{o.url}}">{{o.url}}</a></td>
         </tr>
+        {{/each}}
     </table>
+{{/each}}
+
 </section>
+{{/each}}
