@@ -1,17 +1,31 @@
-<section id="c1" class="page-activ">
+{{each c_s c }}
+<section id="{{c.id}}" class="page-activ">
+    <div class="content">
+    <div class="container-fluid">
     <header>
         <h3>活动中心
-            <small>干部培训</small>
+            <small>{{c.name}}</small>
         </h3>
         <h5>我们致力于打造提供竞赛经验、竞赛资料的优质学生社团</h5>
     </header>
+    <h3>活动时间:</h3><br>
+    <p>{{c.time}}
+    </p><br>
+    <h3>活动背景:</h3><br>
+    <p>{{c.p1}}</p><br>
+    <h3>活动意义:</h3><br>
+    <p>{{c.p2}}
+    </p><br>
+    <h3>活动形式:</h3><br>
+    <p>{{c.p3}}
+    </p><br>
+        <h3>活动流程:</h3><br>
+        <p>{{c.p4}}
+        </p><br>
+        <h3>报名方式:</h3><br>
+        <p>{{c.p5}}
+        </p><br>
+    </div>
+    </div>
 </section>
-
-<section id="c2" class="page-activ">
-    <header>
-        <h3>活动中心
-            <small>程序设计竞赛</small>
-        </h3>
-        <h5>我们致力于打造提供竞赛经验、竞赛资料的优质学生社团</h5>
-    </header>
-</section>
+{{/each}}

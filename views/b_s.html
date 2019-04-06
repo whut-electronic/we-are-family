@@ -1,39 +1,27 @@
-<section id="b1" class="page-activ">
+{{each b_s value}}
+<section id="{{value.id}}" class="page-activ">
     <header>
         <h3>成果展示
-            <small>2018</small>
+            <small>{{value.year}}</small>
         </h3>
         <h5>我们致力于打造提供竞赛经验、竞赛资料的优质学生社团</h5>
     </header>
-    <h1>电子设计大赛</h1>
+    {{each value.c c}}
+    <h1>{{c.name}}</h1>
     <table class="table">
         <tr>
             <th>组别</th>
+            <th>姓名</th>
             <th>奖项</th>
         </tr>
+        {{each c.d d}}
         <tr>
-            <td>xxx</td>
-            <td>全国一等奖</td>
+            <td>{{d.type}}</td>
+            <td>{{d.name}}</td>
+            <td>{{d.honor}}</td>
         </tr>
+        {{/each}}
     </table>
+    {{/each}}
 </section>
-
-<section id="b2" class="page-activ">
-    <header>
-        <h3>成果展示
-            <small>2017</small>
-        </h3>
-        <h5>我们致力于打造提供竞赛经验、竞赛资料的优质学生社团</h5>
-    </header>
-    <h3>电子设计大赛</h3>
-    <table class="table">
-        <tr>
-            <th>组别</th>
-            <th>奖项</th>
-        </tr>
-        <tr>
-            <td>xxx</td>
-            <td>全国一等奖</td>
-        </tr>
-    </table>
-</section>
+{{/each}}

@@ -34,5 +34,5 @@ var a_s =[{
         }
         ]
     }
-]
+];
 module.exports = a_s;
