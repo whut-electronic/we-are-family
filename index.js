@@ -27,6 +27,8 @@ app.get("/about.html",(req,res)=>{ res.render("about.html",{
 app.get("/a.html",(req,res)=>{ res.render("a.html",{a:a});});
 app.get("/b.html",(req,res)=>{ res.render("b.html",{b:b});});
 app.get("/c.html",(req,res)=>{ res.render("c.html",{c:c});});
-app.listen("8080" , ()=>{
-console.log("service start on port 8080... ")
+
+app.get("/admin",(req,res)=>{ res.render("admin.html")});
+app.listen("80" , ()=>{
+console.log("service start on port 80... ")
 });

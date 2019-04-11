@@ -1,12 +1,12 @@
 {
-  "name": "whut-est",
+  "name": "we-are-family",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "We are family!"
   },
-  "author": "",
+  "author": "Reyunn",
   "license": "ISC",
   "dependencies": {
     "art-template": "^4.13.2",
