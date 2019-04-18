@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-for="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>修改协会信息</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<div class="row" id="app">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+
+        <h1>基本信息</h1>
+        <table class="table ">
+            <tr>
+                <th>项目</th>
+                <th>当前值</th>
+            </tr>
+            <tr>
+                <td>协会logo</td>
+                <td><input class="form-control" v-model="url"></td>
+            </tr>
+            <tr>
+                <td>协会介绍</td>
+                <td><input class="form-control" v-model="introduce"></td>
+            </tr>
+            <tr>
+                <td>会员人数</td>
+                <td><input class="form-control" v-model="vip_total1"></td>
+            </tr>
+            <tr>
+                <td>获奖种数</td>
+                <td><input class="form-control" v-model="vip_total2"></td>
+            </tr>
+            <tr>
+                <td>获奖人数</td>
+                <td><input class="form-control" v-model="vip_total3"></td>
+            </tr>
+            <tr>
+                <td>获奖次数</td>
+                <td><input class="form-control" v-model="vip_total4"></td>
+            </tr>
+
+        </table>
+        <h1>获奖人数</h1>
+        <table class="table ">
+            <tr>
+                <th>name</th>
+                <th>num</th>
+                <th>d</th>
+            </tr>
+
+            <tr v-for="(i,index) in num_total">
+                <th><input class="form-control" :placeholder="i.name" v-model="num_total[index].name"></th>
+                <th><input class="form-control" :placeholder="i.num" v-model="num_total[index].num"></th>
+                <th>
+                    <button class="btn primary" @click="del(1,index)">删除</button>
+                </th>
+            </tr>
+
+            <tr>
+                <th><input class="form-control" v-model="a1"></th>
+                <th><input class="form-control" v-model="a2"></th>
+                <th>
+                    <button class="btn primary" @click="add(1)">添加</button>
+                </th>
+            </tr>
+        </table>
+        <h1>时间线</h1>
+        <table class="table ">
+            <tr>
+                <th>time1</th>
+                <th>time2</th>
+                <th>title</th>
+                <th>introduce</th>
+                <th>title</th>
+            </tr>
+
+            <tr v-for="(t,index) in timeline">
+                <th><input class="form-control" :placeholder="t.time1" v-model="timeline[index].time1"></th>
+                <th><input class="form-control" :placeholder="t.time2" v-model="timeline[index].time2"></th>
+                <th><input class="form-control" :placeholder="t.title" v-model="timeline[index].title"></th>
+                <th><input class="form-control" :placeholder="t.introduce" v-model="timeline[index].introduce"></th>
+                <th>
+                    <button class="btn primary" @click="del(2,index)">删除</button>
+                </th>
+            </tr>
+            <tr>
+                <th><input class="form-control" v-model="b1"></th>
+                <th><input class="form-control" v-model="b2"></th>
+                <th><input class="form-control" v-model="b3"></th>
+                <th><input class="form-control" v-model="b4"></th>
+                <th>
+                    <button class="btn primary" @click="add(2)">添加</button>
+                </th>
+            </tr>
+        </table>
+        <button class="btn primary" @click="update">保存修改</button>
+    </div>
+</div>
+
+<script>
+
+    axios.get('/get_about')
+        .then(res => {
+            const app = new Vue({
+                el: "#app",
+                data: {
+                    "a1": "",
+                    "a2": "",
+                    "b1": "",
+                    "b2": "",
+                    "b3": "",
+                    "b4": "",
+                    "url": res.data.url,
+                    "introduce": res.data.introduce,
+                    "num_total": res.data.num_total,
+                    "vip_total1": res.data.vip_total1,
+                    "vip_total2": res.data.vip_total2,
+                    "vip_total3": res.data.vip_total3,
+                    "vip_total4": res.data.vip_total4,
+                    "timeline": res.data.timeline
+                },
+                methods: {
+                    update: function () {
+                        res.data.url = this.url;
+                        res.data.introduce = this.introduce;
+                        res.data.vip_total1 = this.vip_total1;
+                        res.data.vip_total2 = this.vip_total2;
+                        res.data.vip_total3 = this.vip_total3;
+                        res.data.vip_total4 = this.vip_total4;
+                        axios.post("/update1",res.data);
+                    },
+                    del: function (i, index) {
+                        switch (i) {
+                            case 1:
+                                this.num_total.splice(index, 1);
+                                break;
+                            case 2:
+                                this.timeline.splice(index, 1);
+                                break;
+                        }
+                    },
+                    add: function (i) {
+                        switch (i) {
+                            case 1:
+                                const add1 = {"name": this.a1, "num": this.a2}
+                                this.num_total.push(add1);
+                                this.a1 = "";
+                                this.a2 = "";
+                                break;
+                            case 2:
+                                const add2 = {"time1": this.b1, "time2": this.b2 ,"title":this.b3 , "introduce":this.b4};
+                                this.timeline.push(add2);
+                                this.b1 ="";
+                                this.b2 ="";
+                                this.b3 ="";
+                                this.b4 ="";
+                                break;
+                        }
+                    }
+                }
+            });
+        });
+
+
+</script>
+
+
+</body>
+</html>
